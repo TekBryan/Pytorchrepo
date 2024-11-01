@@ -16,7 +16,7 @@ async def queue_start(value: func.QueueMessage, client):
     # Deserialize the queue message
     res = value.get_body().decode('utf-8')  # Get the queue message body as string
     message_dict = json.loads(res)  # Parse the string into a dict
-    function_name = message_dict.get('functionName', 'hello')  # Use a default if not found
+    function_name = message_dict.get('functionName', 'hello my people')  # Use a default if not found
     instance_id = str(uuid.uuid4())  # Generate a unique instance ID
     instance_id = await client.start_new(function_name, instance_id, message_dict)
     log.info(f'Queue trigger started new durable function instance with ID: {instance_id}')
